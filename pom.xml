@@ -10,7 +10,6 @@
 
 	<modules>
 		<module>spring-cloud-commom</module>
-		<module>spring-cloud-eureka-server</module>
 		<module>spring-cloud-eureka-provider-8086</module>
 		<module>spring-cloud-eureka-ribbon-consumer</module>
 		<module>spring-cloud-config-server</module>

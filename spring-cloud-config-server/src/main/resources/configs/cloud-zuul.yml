@@ -10,15 +10,15 @@ spring:
     name: cloud-zuul
     
 server:
-  port: 8084
+  port: 8082
   
 #忽略所有服务，即使得原来的服务不能通过服务名来访问
 zuul:
   ignored-services: "*"
-#zuul超时配置
-  host:
-    connect-timeout-millis: 6000
-    socket-timeout-millis: 6000
+#zuul超时配置,当zuul使用uri路由方式才起作用
+#  host:
+#    connect-timeout-millis: 6000
+#    socket-timeout-millis: 6000
 #将所有/consumer/**访问路径交给eureka-ribbon-consumer这个服务处理  
   routes:
   #路由名，任意取
@@ -26,3 +26,17 @@ zuul:
     #访问路径
       path: /ribbon/**
       service-id: eureka-ribbon-consumer
+
+#配置超时时间，当zuul采用service-id的路由形式时起作用   
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+      
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: cloud-zuul.com

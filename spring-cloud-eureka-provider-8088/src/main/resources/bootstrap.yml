@@ -1,18 +1,13 @@
 spring:
   application:
     name: eureka-provider 
-    config-name: config-server
-  #配置从服务名为config-server中获取配置  
+  #配置从配置中心获取配置  
   cloud:
     config:
-      discovery:
-        enabled: true
-        service-id: ${spring.application.config-name}
+      uri: http://localhost:8761
       fail-fast: true
       label: master
-  profiles:
-    active:
-    - dev
+      profile: dev  
 #配置eureka服务注册中心    
 eureka:
   client:

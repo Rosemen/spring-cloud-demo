@@ -1,20 +1,10 @@
 spring:
   application:
     name: eureka-feign-consumer
-    config-server: config-server
+  #配置从配置中心获取配置  
   cloud:
     config:
-      discovery:
-        enabled: true
-        service-id: ${spring.application.config-server}
-      label: master
-      profile: dev
+      uri: http://localhost:8761
       fail-fast: true
-      
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    prefer-ip-address: true
-    instance-id: eureka-feign-consumer.com
+      label: master
+      profile: dev  
