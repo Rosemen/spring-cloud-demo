@@ -1,0 +1,28 @@
+spring:
+  profiles:
+    active:
+    - dev
+    
+---
+spring:
+  profiles: dev   
+  application:
+    name: cloud-zuul
+    
+server:
+  port: 8084
+  
+#忽略所有服务，即使得原来的服务不能通过服务名来访问
+zuul:
+  ignored-services: "*"
+#zuul超时配置
+  host:
+    connect-timeout-millis: 6000
+    socket-timeout-millis: 6000
+#将所有/consumer/**访问路径交给eureka-ribbon-consumer这个服务处理  
+  routes:
+  #路由名，任意取
+    first:
+    #访问路径
+      path: /ribbon/**
+      service-id: eureka-ribbon-consumer

@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active:
+    - dev
+    
+---
+spring:
+  profiles: dev   
+  application:
+    name: eureka-feign-consumer
+    
+server:
+  port: 8080

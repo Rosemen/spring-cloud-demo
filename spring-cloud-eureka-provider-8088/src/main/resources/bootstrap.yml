@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: eureka-provider 
+    config-name: config-server
+  #配置从服务名为config-server中获取配置  
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: ${spring.application.config-name}
+      fail-fast: true
+      label: master
+  profiles:
+    active:
+    - dev
+#配置eureka服务注册中心    
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: eureka-provider-8088.com
+    
+server:
+  port: 8088

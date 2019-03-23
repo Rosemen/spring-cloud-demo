@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active:
+    - dev
+    
+---
+spring:
+  profiles: dev   
+  application:
+    name: eureka-ribbon-consumer
+    
+server:
+  port: 8080

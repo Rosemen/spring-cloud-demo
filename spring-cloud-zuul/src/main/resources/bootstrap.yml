@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: cloud-zuul
+    config-server: config-server
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: ${spring.application.config-server}
+      label: master
+      profile: dev
+      fail-fast: true
+      
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: cloud-zuul.com
